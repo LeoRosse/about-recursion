@@ -1,11 +1,15 @@
 import * as React from "react";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../store/hooks";
+import { setDataTest } from "../../store/slices";
 
 const DamnNested: React.FC = () => {
-  const [test, setTest] = React.useState<boolean>(false);
+  const dispatch = useDispatch();
+  const test = useAppSelector((state) => state.data.test);
 
   React.useEffect(() => {
     setTimeout(() => {
-      setTest(true);
+      dispatch(setDataTest({ test: true }));
     }, 3000);
   }, []);
 

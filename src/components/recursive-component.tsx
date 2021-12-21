@@ -3,6 +3,7 @@ import { Container } from "../types";
 import { Chart } from "../types/chart";
 import { isContainer } from "../types/is-container";
 import { chartsMap } from "./charts/charts-map";
+import { ChildComponent } from "./child-component";
 
 interface RecursiveComponentProps {
   containers: Container[];
@@ -16,22 +17,30 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({
     if (isContainer(container)) {
       window.console.log("[LOG]: is container");
       return (
-        <div key={container.containerInfo.id} className="border-2 border-black">
-          {container.containerInfo.children?.map((child: Container | Chart) => {
-            window.console.log("[LOG]: is child");
-            return (
-              <div
-                key={
-                  isContainer(child)
-                    ? child.containerInfo.id
-                    : child.chartInfo.id
-                }
-              >
-                {createComponent(child)}
-              </div>
-            );
-          })}
-        </div>
+        <>
+          <ChildComponent />
+          <div
+            key={container.containerInfo.id}
+            className="border-2 border-black p-2"
+          >
+            {container.containerInfo.children?.map(
+              (child: Container | Chart) => {
+                window.console.log("[LOG]: is child");
+                return (
+                  <div
+                    key={
+                      isContainer(child)
+                        ? child.containerInfo.id
+                        : child.chartInfo.id
+                    }
+                  >
+                    {createComponent(child)}
+                  </div>
+                );
+              }
+            )}
+          </div>
+        </>
       );
     }
     return (
