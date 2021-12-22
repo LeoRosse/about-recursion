@@ -18,15 +18,17 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
       return (
         <>
           {container.containerInfo.title ||
-            (container.metadata?.actions.length && (
+            (container.metadata?.actions?.length && (
               <div className="flex justify-between my-2">
                 {container.containerInfo.title}
-                {container.metadata?.actions.length && <ActionsComponent />}
+                {container.metadata?.actions?.length && <ActionsComponent />}
               </div>
             ))}
           <div
             key={container.containerInfo.id}
-            className={`border-2 border-black p-4 gap-4 grid grid-cols-${container.containerInfo.cols} grid-rows-${container.containerInfo.rows}`}
+            className={`${!container?.metadata?.containerBox ? 'border-4 p-4' : ''}  rounded-lg gap-4 grid grid-cols-${
+              container.containerInfo.cols
+            } grid-rows-${container.containerInfo.rows} grid-flow-row`}
           >
             {container.containerInfo.children?.map((child: Container | Chart) => {
               window.console.log('[LOG]: is child');
@@ -46,8 +48,8 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
   };
   // page
   return (
-    <>
-      <div className="flex justify-between my-4">
+    <div className="mt-10 text-3xl mx-auto max-w-6xl space-y-24">
+      <div className="flex justify-between my-4 ">
         <div>Name: {containers[0].containerInfo.title}</div>
         <div className="flex">
           bottoni
@@ -60,7 +62,7 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
           {createComponent(container)}
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

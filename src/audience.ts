@@ -98,6 +98,9 @@ const audience: { containers: Container[] } = {
                       },
                     ],
                   },
+                  metadata: {
+                    containerBox: true,
+                  },
                 },
                 {
                   chartInfo: {

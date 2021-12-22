@@ -1,5 +1,5 @@
-import * as React from "react";
+import * as React from 'react';
 
-const SuperNested: React.FC = () => <div>Super Nested</div>;
+const SuperNested: React.FC = () => <>Super Nested</>;
 
 export { SuperNested };
