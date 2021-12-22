@@ -1,5 +1,8 @@
 import * as React from "react";
 
-const SecondChart: React.FC = () => <div>Second Chart</div>;
+const SecondChart: React.FC = () => {
+  window.console.log("[LOG] second chart");
+  return <div>Second Chart</div>;
+};
 
 export { SecondChart };

@@ -13,6 +13,28 @@ const payload: { containers: Container[] } = {
               title: "Nested Container",
               children: [
                 {
+                  containerInfo: {
+                    id: "super-extra-nested-container",
+                    title: "Super Extra Nested Container",
+                    children: [
+                      {
+                        chartInfo: {
+                          id: "damn-nested",
+                          title: "Damn Nested",
+                        },
+                      },
+                    ],
+                  },
+                  metadata: {
+                    actions: [
+                      {
+                        types: "export",
+                        values: ["image", "xls", "svg"],
+                      },
+                    ],
+                  },
+                },
+                {
                   chartInfo: {
                     id: "first-chart",
                     title: "First Chart",
@@ -40,6 +62,14 @@ const payload: { containers: Container[] } = {
                 },
               ],
             },
+          },
+        ],
+      },
+      metadata: {
+        actions: [
+          {
+            types: "export",
+            values: ["image", "xls", "svg"],
           },
         ],
       },

@@ -3,7 +3,7 @@ import { Container } from "../types";
 import { Chart } from "../types/chart";
 import { isContainer } from "../types/is-container";
 import { chartsMap } from "./charts/charts-map";
-import { ChildComponent } from "./child-component";
+import { ActionsComponent } from "./actions-component";
 
 interface RecursiveComponentProps {
   containers: Container[];
@@ -15,13 +15,13 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({
   window.console.log("[LOG]: first level");
   const createComponent = (container: Container | Chart) => {
     if (isContainer(container)) {
-      window.console.log("[LOG]: is container");
+      window.console.log(container.containerInfo.id, "[LOG]: is container");
       return (
         <>
-          <ChildComponent />
+          {container.metadata?.actions.length && <ActionsComponent />}
           <div
             key={container.containerInfo.id}
-            className="border-2 border-black p-2"
+            className="border-2 border-black p-4 my-2"
           >
             {container.containerInfo.children?.map(
               (child: Container | Chart) => {
@@ -43,6 +43,7 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({
         </>
       );
     }
+    window.console.log(container, "[LOG]: is chart");
     return (
       <div key={container.chartInfo.id}>
         {chartsMap[container.chartInfo.id]}
