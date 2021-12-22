@@ -4,6 +4,7 @@ import { Chart } from '../types/chart';
 import { isContainer } from '../types/is-container';
 import { chartsMap } from './charts/charts-map';
 import { ActionsComponent } from './actions-component';
+import { createContainer } from './utility/create-container';
 
 interface RecursiveComponentProps {
   containers: Container[];
@@ -16,6 +17,8 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
     // container
     if (isContainer(container)) {
       window.console.log(container, '[LOG]: is container');
+      const hasPolicy = container.metadata?.relatedActions?.find((relAct) => relAct.types === 'policy');
+      if (hasPolicy && !hasPolicy?.values.includes(policy)) return null;
       return (
         <>
           {(container.containerInfo.title || container.metadata?.actions?.length) && (
@@ -51,6 +54,7 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
   // page
   return (
     <div className="mt-10 text-3xl mx-auto max-w-6xl space-y-24">
+      {/* Section Heading */}
       <div className="flex justify-between my-4 ">
         <div>Name: {containers[0].containerInfo.title}</div>
         <div className="flex">
@@ -58,11 +62,8 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
           <button onClick={() => setPolicy('private')}>private</button>
         </div>
       </div>
-      {containers[0].containerInfo.children.map((container) => (
-        <div key={isContainer(container) ? container.containerInfo.id : container.chartInfo.id}>
-          {createComponent(container)}
-        </div>
-      ))}
+      {/* End Section Heading */}
+      {createContainer(createComponent, containers[0].containerInfo.children, policy)}
     </div>
   );
 };
