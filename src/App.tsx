@@ -13,7 +13,7 @@ const App = () => {
   // window.console.log(policy, 'policy');
   return (
     <Provider store={store}>
-      <div className="mt-10 text-3xl mx-auto max-w-6xl">
+      <>
         {/* <div className="flex justify-between my-4">
           <div>Name: {audience.containers[0].containerInfo.title}</div>
           <div className="flex">
@@ -22,7 +22,7 @@ const App = () => {
           </div>
         </div> */}
         <RecursiveComponent containers={audience.containers} />
-      </div>
+      </>
     </Provider>
   );
 };

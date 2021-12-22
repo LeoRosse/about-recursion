@@ -12,5 +12,6 @@ export interface Container {
   readonly metadata?: {
     readonly actions?: MetadataAction[];
     readonly relatedActions?: MetadataAction[];
+    readonly containerBox?: boolean;
   };
 }
