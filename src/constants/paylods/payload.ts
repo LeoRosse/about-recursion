@@ -1,32 +1,32 @@
-import { Container } from "./types";
+import { Container } from '../../types';
 
 const payload: { containers: Container[] } = {
   containers: [
     {
       containerInfo: {
-        id: "first-container",
-        title: "First Container",
+        id: 'first-container',
+        title: 'First Container',
         children: [
           {
             containerInfo: {
-              id: "nested-container",
-              title: "Nested Container",
+              id: 'nested-container',
+              title: 'Nested Container',
               children: [
                 {
                   containerInfo: {
-                    id: "super-extra-nested-container",
-                    title: "Super Extra Nested Container",
+                    id: 'super-extra-nested-container',
+                    title: 'Super Extra Nested Container',
                     children: [
                       {
                         chartInfo: {
-                          id: "super-nested",
-                          title: "Super Nested",
+                          id: 'super-nested',
+                          title: 'Super Nested',
                         },
                       },
                       {
                         chartInfo: {
-                          id: "first-chart",
-                          title: "First Chart",
+                          id: 'first-chart',
+                          title: 'First Chart',
                         },
                       },
                     ],
@@ -34,16 +34,16 @@ const payload: { containers: Container[] } = {
                   metadata: {
                     actions: [
                       {
-                        types: "export",
-                        values: ["image", "xls", "svg"],
+                        types: 'export',
+                        values: ['image', 'xls', 'svg'],
                       },
                     ],
                   },
                 },
                 {
                   chartInfo: {
-                    id: "second-chart",
-                    title: "Second Chart",
+                    id: 'second-chart',
+                    title: 'Second Chart',
                   },
                 },
               ],
@@ -51,13 +51,13 @@ const payload: { containers: Container[] } = {
           },
           {
             containerInfo: {
-              id: "super-nested-container",
-              title: "Super Nested Container",
+              id: 'super-nested-container',
+              title: 'Super Nested Container',
               children: [
                 {
                   chartInfo: {
-                    id: "damn-nested",
-                    title: "Damn Nested",
+                    id: 'damn-nested',
+                    title: 'Damn Nested',
                   },
                 },
               ],
@@ -68,8 +68,8 @@ const payload: { containers: Container[] } = {
       metadata: {
         actions: [
           {
-            types: "export",
-            values: ["image", "xls", "svg"],
+            types: 'export',
+            values: ['image', 'xls', 'svg'],
           },
         ],
       },

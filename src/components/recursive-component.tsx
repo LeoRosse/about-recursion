@@ -10,25 +10,27 @@ interface RecursiveComponentProps {
 }
 
 const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) => {
+  const [policy, setPolicy] = React.useState<string>('private');
   window.console.log('[LOG]: first level');
   const createComponent = (container: Container | Chart) => {
     // container
     if (isContainer(container)) {
-      window.console.log(container.containerInfo.id, '[LOG]: is container');
+      window.console.log(container, '[LOG]: is container');
       return (
         <>
-          {container.containerInfo.title ||
-            (container.metadata?.actions?.length && (
-              <div className="flex justify-between my-2">
-                {container.containerInfo.title}
-                {container.metadata?.actions?.length && <ActionsComponent />}
-              </div>
-            ))}
+          {(container.containerInfo.title || container.metadata?.actions?.length) && (
+            <div className="flex justify-between my-2">
+              {container.containerInfo.title}
+              {container.metadata?.actions?.length && <ActionsComponent />}
+            </div>
+          )}
           <div
             key={container.containerInfo.id}
-            className={`${!container?.metadata?.containerBox ? 'border-4 p-4' : ''}  rounded-lg gap-4 grid grid-cols-${
-              container.containerInfo.cols
-            } grid-rows-${container.containerInfo.rows} grid-flow-row`}
+            className={`${
+              container?.metadata?.containerBox === false ? '' : 'border-4 p-4'
+            } rounded-lg gap-4 grid grid-cols-${container.containerInfo.cols} grid-rows-${
+              container.containerInfo.rows
+            } grid-flow-row`}
           >
             {container.containerInfo.children?.map((child: Container | Chart) => {
               window.console.log('[LOG]: is child');
@@ -52,9 +54,8 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
       <div className="flex justify-between my-4 ">
         <div>Name: {containers[0].containerInfo.title}</div>
         <div className="flex">
-          bottoni
-          {/* <button onClick={() => setPolicy('public')}>public</button>
-          <button onClick={() => setPolicy('private')}>private</button> */}
+          <button onClick={() => setPolicy('public')}>public</button>
+          <button onClick={() => setPolicy('private')}>private</button>
         </div>
       </div>
       {containers[0].containerInfo.children.map((container) => (

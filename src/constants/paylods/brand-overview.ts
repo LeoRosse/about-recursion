@@ -1,6 +1,6 @@
-import { Container } from './types';
+import { Container } from '../../types';
 
-const audience: { containers: Container[] } = {
+const brandOverview: { containers: Container[] } = {
   containers: [
     {
       containerInfo: {
@@ -10,7 +10,7 @@ const audience: { containers: Container[] } = {
           {
             containerInfo: {
               id: 'audience',
-              title: 'Audience',
+              title: 'Audience Public',
               cols: 3,
               rows: 2,
               children: [
@@ -49,6 +49,20 @@ const audience: { containers: Container[] } = {
                     id: 'first-chart',
                     title: 'First Chart',
                   },
+                },
+              ],
+            },
+            metadata: {
+              actions: [
+                {
+                  types: 'export',
+                  values: ['image', 'xls', 'svg'],
+                },
+              ],
+              relatedActions: [
+                {
+                  types: 'policy',
+                  values: ['public'],
                 },
               ],
             },
@@ -99,7 +113,13 @@ const audience: { containers: Container[] } = {
                     ],
                   },
                   metadata: {
-                    containerBox: true,
+                    actions: [
+                      {
+                        types: 'export',
+                        values: ['image', 'xls', 'svg'],
+                      },
+                    ],
+                    containerBox: false,
                   },
                 },
                 {
@@ -165,4 +185,4 @@ const audience: { containers: Container[] } = {
   ],
 };
 
-export { audience };
+export { brandOverview };

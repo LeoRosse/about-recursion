@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { audience } from './audience';
+import { brandOverview } from './constants/paylods/brand-overview';
 
 import { RecursiveComponent } from './components/recursive-component';
 
@@ -10,9 +10,7 @@ import { store } from './store/store';
 
 const App = () => (
   <Provider store={store}>
-    <>
-      <RecursiveComponent containers={audience.containers} />
-    </>
+    <RecursiveComponent containers={brandOverview.containers} />
   </Provider>
 );
 

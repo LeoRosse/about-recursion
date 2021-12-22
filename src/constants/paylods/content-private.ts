@@ -1,4 +1,4 @@
-import { Container } from './types';
+import { Container } from '../../types';
 
 const contentPrivate: { containers: Container[] } = {
   containers: [
