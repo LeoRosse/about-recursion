@@ -11,7 +11,7 @@ interface RecursiveComponentProps {
 }
 
 const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) => {
-  const [policy, setPolicy] = React.useState<string>('private');
+  const [policy, setPolicy] = React.useState<string>('public');
   window.console.log('[LOG]: first level');
   const createComponent = (container: Container | Chart) => {
     // container

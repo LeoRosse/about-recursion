@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { brandOverview } from './constants/paylods/brand-overview';
+import { brandOverview } from './constants/payloads/brand-overview';
 
 import { RecursiveComponent } from './components/recursive-component';
 
