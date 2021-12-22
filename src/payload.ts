@@ -19,8 +19,14 @@ const payload: { containers: Container[] } = {
                     children: [
                       {
                         chartInfo: {
-                          id: "damn-nested",
-                          title: "Damn Nested",
+                          id: "super-nested",
+                          title: "Super Nested",
+                        },
+                      },
+                      {
+                        chartInfo: {
+                          id: "first-chart",
+                          title: "First Chart",
                         },
                       },
                     ],
@@ -32,12 +38,6 @@ const payload: { containers: Container[] } = {
                         values: ["image", "xls", "svg"],
                       },
                     ],
-                  },
-                },
-                {
-                  chartInfo: {
-                    id: "first-chart",
-                    title: "First Chart",
                   },
                 },
                 {

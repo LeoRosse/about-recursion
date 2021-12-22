@@ -1,19 +1,29 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { audience } from './audience';
 
-import { RecursiveComponent } from "./components/recursive-component";
+import { RecursiveComponent } from './components/recursive-component';
 
-import "./index.scss";
-import { payload } from "./payload";
-import { store } from "./store/store";
+import './index.scss';
+import { store } from './store/store';
 
-const App = () => (
-  <Provider store={store}>
-    <div className="mt-10 text-3xl mx-auto max-w-6xl">
-      <div>Name: recursive-study</div>
-      <RecursiveComponent containers={payload.containers} />
-    </div>
-  </Provider>
-);
-ReactDOM.render(<App />, document.getElementById("app"));
+const App = () => {
+  // const [policy, setPolicy] = React.useState<string>('private');
+  // window.console.log(policy, 'policy');
+  return (
+    <Provider store={store}>
+      <div className="mt-10 text-3xl mx-auto max-w-6xl">
+        {/* <div className="flex justify-between my-4">
+          <div>Name: {audience.containers[0].containerInfo.title}</div>
+          <div className="flex">
+            <button onClick={() => setPolicy('public')}>public</button>
+            <button onClick={() => setPolicy('private')}>private</button>
+          </div>
+        </div> */}
+        <RecursiveComponent containers={audience.containers} />
+      </div>
+    </Provider>
+  );
+};
+ReactDOM.render(<App />, document.getElementById('app'));
