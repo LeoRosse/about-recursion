@@ -1,11 +1,9 @@
-import * as React from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../store/hooks";
-import { setDataTest } from "../../store/slices";
+import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { setDataTest } from '../../store/slices';
 
 const DamnNested: React.FC = () => {
   const dispatch = useDispatch();
-  const test = useAppSelector((state) => state.data.test);
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -13,7 +11,6 @@ const DamnNested: React.FC = () => {
     }, 3000);
   }, []);
 
-  window.console.log(test, "[LOG] damn nested");
   return <div>Damn Nested</div>;
 };
 

@@ -12,11 +12,11 @@ interface RecursiveComponentProps {
 
 const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) => {
   const [policy, setPolicy] = React.useState<string>('public');
-  window.console.log('[LOG]: first level');
+  // window.console.log('[LOG]: first level');
   const createComponent = (container: Container | Chart) => {
     // container
     if (isContainer(container)) {
-      window.console.log(container, '[LOG]: is container');
+      // window.console.log(container, '[LOG]: is container');
       const hasPolicy = container.metadata?.relatedActions?.find((relAct) => relAct.types === 'policy');
       if (hasPolicy && !hasPolicy?.values.includes(policy)) return null;
       return (
@@ -24,7 +24,7 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
           {(container.containerInfo.title || container.metadata?.actions?.length) && (
             <div className="flex justify-between my-2">
               {container.containerInfo.title}
-              {container.metadata?.actions?.length && <ActionsComponent />}
+              {container.metadata?.actions?.length && <ActionsComponent container={container} />}
             </div>
           )}
           <div
@@ -36,7 +36,7 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
             } grid-flow-row`}
           >
             {container.containerInfo.children?.map((child: Container | Chart) => {
-              window.console.log('[LOG]: is child');
+              // window.console.log('[LOG]: is child');
               return (
                 <div key={isContainer(child) ? child.containerInfo.id : child.chartInfo.id}>
                   {createComponent(child)}
@@ -47,7 +47,7 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ containers }) =
         </>
       );
     }
-    window.console.log(container, '[LOG]: is chart');
+    // window.console.log(container, '[LOG]: is chart');
     // chart
     return <div key={container.chartInfo.id}>{chartsMap[container.chartInfo.id]}</div>;
   };
