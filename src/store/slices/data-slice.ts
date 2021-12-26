@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DataSet } from '../../types/data-set';
+import { updateNestedObject } from '../../utility/update-nested-object';
 
 export interface DataSliceState {
   test: boolean | undefined; // Profiles
@@ -12,15 +13,15 @@ export const dataSlice = createSlice({
   name: 'data',
   initialState,
   reducers: {
-    setDataTest: (state, action: PayloadAction<{ test: boolean }>) => {
-      state.test = action.payload.test;
-    },
     setDataSet: (state, action: PayloadAction<DataSet>) => {
       state.dataSet = { ...state.dataSet, ...action.payload };
+    },
+    updateDataSet: <T>(state, action: PayloadAction<{ keyName: string; data: T }>) => {
+      state.dataSet = updateNestedObject(state.dataSet, action.payload.keyName, action.payload.data);
     },
   },
 });
 
-export const { setDataTest, setDataSet } = dataSlice.actions;
+export const { setDataSet, updateDataSet } = dataSlice.actions;
 
 export const dataSliceReducer = dataSlice.reducer;

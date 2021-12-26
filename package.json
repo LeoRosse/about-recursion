@@ -1,5 +1,5 @@
 {
-  "name": "recursive-study",
+  "name": "about-recursion",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode production",
@@ -10,8 +10,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Leonardo Rosseti",
+    "email": "leorosse87@gmail.com"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -35,6 +35,8 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
     "@reduxjs/toolkit": "^1.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

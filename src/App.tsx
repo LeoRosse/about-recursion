@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { brandOverview } from './constants/payloads/brand-overview';
 
-import { RecursiveComponent } from './components/recursive-component';
+import { GraphSection } from './components/graph-section';
 
 import './index.scss';
 import { store } from './store/store';
 
 const App = () => (
   <Provider store={store}>
-    <RecursiveComponent containers={brandOverview.containers} />
+    <GraphSection containers={brandOverview.containers} />
   </Provider>
 );
 
