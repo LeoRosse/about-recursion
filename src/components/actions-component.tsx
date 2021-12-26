@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { setDataSet } from '../store/slices';
+import { createDataSet } from '../store/slices';
 import { Container } from '../types';
 import { createObjectNested } from '../utility/create-nested-object';
 import { Dropdown } from './dropdown/dropdown';
@@ -18,7 +18,7 @@ const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(
-      setDataSet({
+      createDataSet({
         [container.containerInfo.id]: container.containerInfo.children.reduce(
           (acc, curr) => ({ ...acc, ...createObjectNested(curr) }),
           {},

@@ -3,17 +3,16 @@ import { DataSet } from '../../types/data-set';
 import { updateNestedObject } from '../../utility/update-nested-object';
 
 export interface DataSliceState {
-  test: boolean | undefined; // Profiles
   dataSet: DataSet;
 }
 
-const initialState: DataSliceState = { test: undefined, dataSet: {} };
+const initialState: DataSliceState = { dataSet: {} };
 
 export const dataSlice = createSlice({
   name: 'data',
   initialState,
   reducers: {
-    setDataSet: (state, action: PayloadAction<DataSet>) => {
+    createDataSet: (state, action: PayloadAction<DataSet>) => {
       state.dataSet = { ...state.dataSet, ...action.payload };
     },
     updateDataSet: <T>(state, action: PayloadAction<{ keyName: string; data: T }>) => {
@@ -22,6 +21,6 @@ export const dataSlice = createSlice({
   },
 });
 
-export const { setDataSet, updateDataSet } = dataSlice.actions;
+export const { createDataSet, updateDataSet } = dataSlice.actions;
 
 export const dataSliceReducer = dataSlice.reducer;
