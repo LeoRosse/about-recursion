@@ -15,8 +15,9 @@ export const dataSlice = createSlice({
     createDataSet: (state, action: PayloadAction<DataSet>) => {
       state.dataSet = { ...state.dataSet, ...action.payload };
     },
-    updateDataSet: <T>(state, action: PayloadAction<{ keyName: string; data: T }>) => {
-      state.dataSet = updateNestedObject(state.dataSet, action.payload.keyName, action.payload.data);
+    updateDataSet: <T>(state: DataSliceState, action: PayloadAction<{ keyName: string; data: T }>) => {
+      const nextState = updateNestedObject(state.dataSet, action.payload.keyName, action.payload.data);
+      state.dataSet = nextState;
     },
   },
 });

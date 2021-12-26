@@ -158,6 +158,14 @@ const brandOverview: { containers: Container[] } = {
                 },
               ],
             },
+            metadata: {
+              actions: [
+                {
+                  types: 'export',
+                  values: ['image', 'xls', 'svg'],
+                },
+              ],
+            },
           },
           {
             containerInfo: {
@@ -172,6 +180,14 @@ const brandOverview: { containers: Container[] } = {
                 },
               ],
             },
+            metadata: {
+              actions: [
+                {
+                  types: 'export',
+                  values: ['image', 'xls', 'svg'],
+                },
+              ],
+            },
           },
           {
             containerInfo: {
@@ -183,6 +199,14 @@ const brandOverview: { containers: Container[] } = {
                     id: 'super-nested',
                     title: 'Super Nested',
                   },
+                },
+              ],
+            },
+            metadata: {
+              actions: [
+                {
+                  types: 'export',
+                  values: ['image', 'xls', 'svg'],
                 },
               ],
             },

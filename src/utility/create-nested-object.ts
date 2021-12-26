@@ -1,3 +1,4 @@
+import { DATA_KEY } from '../constants/data-key';
 import { Container } from '../types';
 import { Chart } from '../types/chart';
 import { DataSet } from '../types/data-set';
@@ -12,7 +13,7 @@ const createObjectNested = (element: Container | Chart): DataSet => {
       ),
     };
   }
-  return { [element.chartInfo.id]: { data: {} } };
+  return { [element.chartInfo.id]: { [DATA_KEY]: {} } };
 };
 
 export { createObjectNested };

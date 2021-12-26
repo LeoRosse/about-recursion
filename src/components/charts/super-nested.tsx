@@ -1,5 +1,19 @@
 import * as React from 'react';
+import { useAppDispatch } from '../../store/hooks';
+import { updateDataSet } from '../../store/slices';
+import { Component } from '../../types/component';
 
-const SuperNested: React.FC = () => <>Super Nested</>;
+interface SuperNestedProps extends Component {}
+
+const SuperNested: React.FC<SuperNestedProps> = ({ id }) => {
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/albums')
+      .then((response) => response.json())
+      .then((data) => dispatch(updateDataSet({ keyName: id, data })));
+  }, []);
+  return <>Super Nested</>;
+};
 
 export default SuperNested;

@@ -3,7 +3,9 @@ import { Container } from '../types';
 import { Chart } from '../types/chart';
 import { isContainer } from '../types/is-container';
 import { ActionsComponent } from './actions-component';
+import { SectionHeading } from './section-heading/section-heading';
 import { createContainer } from './utility/create-container';
+import { displayContainer } from './utility/display-container';
 import { returnChartsDinamically } from './utility/return-charts-dinamically';
 
 interface GraphSectionProps {
@@ -11,15 +13,13 @@ interface GraphSectionProps {
 }
 
 const GraphSection: React.FC<GraphSectionProps> = ({ containers }) => {
-  const [policy, setPolicy] = React.useState<string>('public');
   // window.console.log('[LOG]: first level');
   const createComponent = (container: Container | Chart) => {
     // container
     if (isContainer(container)) {
       // window.console.log(container, '[LOG]: is container');
       // here the logic to render the container (print, policy etc)
-      const hasPolicy = container.metadata?.relatedActions?.find((relAct) => relAct.types === 'policy');
-      if (hasPolicy && !hasPolicy?.values.includes(policy)) return null;
+      if (!displayContainer(container)) return null;
       return (
         <>
           {(container.containerInfo.title || container.metadata?.actions?.length) && (
@@ -61,15 +61,7 @@ const GraphSection: React.FC<GraphSectionProps> = ({ containers }) => {
   // page
   return (
     <div className="mt-10 text-3xl mx-auto max-w-6xl space-y-24">
-      {/* Section Heading */}
-      <div className="flex justify-between my-4">
-        <div>Name: {containers[0].containerInfo.title}</div>
-        <div className="flex">
-          <button onClick={() => setPolicy('public')}>public</button>
-          <button onClick={() => setPolicy('private')}>private</button>
-        </div>
-      </div>
-      {/* End Section Heading */}
+      <SectionHeading container={containers[0]} />
       {createContainer(createComponent, containers[0].containerInfo.children)}
     </div>
   );
