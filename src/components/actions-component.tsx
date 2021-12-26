@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createDataSet } from '../store/slices';
 import { Container } from '../types';
 import { createObjectNested } from '../utility/create-nested-object';
-import { Dropdown } from './dropdown/dropdown';
+import { BuildActionsComponentByType } from './utility/build-actions-component-by-type';
 
 interface ActionsComponentProps {
   container: Container;
@@ -26,9 +26,10 @@ const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
       }),
     );
   }, [container]);
+
   return (
     <div className="text-right">
-      <Dropdown />
+      <BuildActionsComponentByType actions={container.metadata.actions} />
     </div>
   );
 };
