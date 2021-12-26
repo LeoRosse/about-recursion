@@ -70,7 +70,7 @@ const GraphSection: React.FC<GraphSectionProps> = ({ containers }) => {
         </div>
       </div>
       {/* End Section Heading */}
-      {createContainer(createComponent, containers[0].containerInfo.children, policy)}
+      {createContainer(createComponent, containers[0].containerInfo.children)}
     </div>
   );
 };
