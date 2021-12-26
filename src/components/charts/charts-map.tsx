@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { DamnNested } from './damn-nested';
-import { FirstChart } from './first-chart';
-import { FivthChart } from './fivth-chart';
-import { FourthChart } from './fourth-chart';
-import { SecondChart } from './second-chart';
-import { SuperNested } from './super-nested';
-import { ThirdChart } from './third-chart';
+import DamnNested from './damn-nested';
+import FirstChart from './first-chart';
+import FivthChart from './fivth-chart';
+import FourthChart from './fourth-chart';
+import SecondChart from './second-chart';
+import SuperNested from './super-nested';
+import ThirdChart from './third-chart';
 
 const chartsMap = {
   'first-chart': <FirstChart />,
@@ -13,7 +13,7 @@ const chartsMap = {
   'damn-nested': <DamnNested />,
   'super-nested': <SuperNested />,
   'third-chart': <ThirdChart />,
-  'fourth-chart': <FourthChart />,
+  'fourth-chart': <FourthChart id="fourth-chart" />,
   'fivth-chart': <FivthChart />,
 };
 

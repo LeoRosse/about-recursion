@@ -4,4 +4,4 @@ const FirstChart: React.FC = () => {
   return <div>First Chart</div>;
 };
 
-export { FirstChart };
+export default FirstChart;

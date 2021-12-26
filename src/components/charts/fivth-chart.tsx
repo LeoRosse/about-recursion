@@ -4,4 +4,4 @@ const FivthChart: React.FC = () => {
   return <div>Fivth Chart</div>;
 };
 
-export { FivthChart };
+export default FivthChart;

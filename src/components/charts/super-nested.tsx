@@ -2,4 +2,4 @@ import * as React from 'react';
 
 const SuperNested: React.FC = () => <>Super Nested</>;
 
-export { SuperNested };
+export default SuperNested;

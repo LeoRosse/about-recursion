@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Container } from '../types';
 import { Chart } from '../types/chart';
 import { isContainer } from '../types/is-container';
-import { chartsMap } from './charts/charts-map';
 import { ActionsComponent } from './actions-component';
 import { createContainer } from './utility/create-container';
+import { returnChartsDinamically } from './utility/return-charts-dinamically';
 
 interface GraphSectionProps {
   containers: Container[];
@@ -50,7 +50,13 @@ const GraphSection: React.FC<GraphSectionProps> = ({ containers }) => {
     }
     // window.console.log(container, '[LOG]: is chart');
     // chart
-    return <div key={container.chartInfo.id}>{chartsMap[container.chartInfo.id]}</div>;
+    return (
+      <div key={container.chartInfo.id}>
+        <React.Suspense fallback={<div>Loading...</div>}>
+          {returnChartsDinamically(container.chartInfo.id)}
+        </React.Suspense>
+      </div>
+    );
   };
   // page
   return (

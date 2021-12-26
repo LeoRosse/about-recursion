@@ -4,4 +4,4 @@ const DamnNested: React.FC = () => {
   return <div>Damn Nested</div>;
 };
 
-export { DamnNested };
+export default DamnNested;
