@@ -2,11 +2,11 @@ import React from 'react';
 
 import { RefContext } from '../../providers/ref-provider';
 
-interface GenericChartContainerProps {
+interface GenericContainerProps {
   containerId: string;
 }
 
-const GenericChartContainer: React.FC<GenericChartContainerProps> = ({ children, containerId }) => {
+const GenericContainer: React.FC<GenericContainerProps> = ({ children, containerId }) => {
   const ref = React.useContext(RefContext);
 
   return (
@@ -16,4 +16,4 @@ const GenericChartContainer: React.FC<GenericChartContainerProps> = ({ children,
   );
 };
 
-export { GenericChartContainer };
+export { GenericContainer };

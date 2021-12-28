@@ -8,7 +8,7 @@ interface TheComponentProps extends Component {}
 const requireCharts = require.context('../charts', true, /.tsx$/);
 
 // this function returns charts based on the own ids. The filename MUST match with the id on payloads.
-const returnChartsDinamically = (id: string) => {
+const returnChartsDinamically = (id: string): JSX.Element => {
   const string = requireCharts.keys().find((fileName) => fileName.includes(id));
   if (!string) return <ChartFallback id="chart-fallback" />;
   const componentConfig = requireCharts(string);
