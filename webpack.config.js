@@ -1,6 +1,8 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
+const path = require('path');
+
 const deps = require('./package.json').dependencies;
 module.exports = (_, argv) => {
   const pathDomain = argv.mode === 'development' ? 'http://localhost:8080/' : 'https://about-recursion.vercel.app/';
@@ -10,6 +12,9 @@ module.exports = (_, argv) => {
     },
 
     resolve: {
+      alias: {
+        src: path.resolve(__dirname, 'src'),
+      },
       extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
     },
 

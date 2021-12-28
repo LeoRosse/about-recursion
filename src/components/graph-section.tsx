@@ -54,13 +54,7 @@ const GraphSection: React.FC<GraphSectionProps> = ({ containers }) => {
     }
     // window.console.log(container, '[LOG]: is chart');
     // chart
-    return (
-      <div key={container.chartInfo.id}>
-        <React.Suspense fallback={<div>Loading...</div>}>
-          {returnChartsDinamically(container.chartInfo.id)}
-        </React.Suspense>
-      </div>
-    );
+    return <div key={container.chartInfo.id}>{returnChartsDinamically(container.chartInfo.id)}</div>;
   };
   // page
   return (

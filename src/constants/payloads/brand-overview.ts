@@ -113,12 +113,6 @@ const brandOverview: { containers: Container[] } = {
                     ],
                   },
                   metadata: {
-                    actions: [
-                      {
-                        types: 'export',
-                        values: ['image', 'xls', 'svg'],
-                      },
-                    ],
                     containerBox: false,
                   },
                 },
@@ -196,8 +190,8 @@ const brandOverview: { containers: Container[] } = {
               children: [
                 {
                   chartInfo: {
-                    id: 'super-nested',
-                    title: 'Super Nested',
+                    id: 'top-images',
+                    title: 'Top Images',
                   },
                 },
               ],
