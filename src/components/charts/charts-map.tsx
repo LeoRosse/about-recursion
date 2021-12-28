@@ -8,10 +8,10 @@ import SuperNested from './super-nested';
 import ThirdChart from './third-chart';
 
 const chartsMap = {
-  'first-chart': <FirstChart />,
+  'first-chart': <FirstChart id="first-chart" />,
   'second-chart': <SecondChart />,
   'damn-nested': <DamnNested />,
-  'super-nested': <SuperNested />,
+  'super-nested': <SuperNested id="super-nested" />,
   'third-chart': <ThirdChart />,
   'fourth-chart': <FourthChart id="fourth-chart" />,
   'fivth-chart': <FivthChart />,

@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { ComponentActionsProps } from '../../types/component-actions-props';
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 

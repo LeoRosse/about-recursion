@@ -10,13 +10,9 @@ interface ActionsComponentProps {
 }
 
 const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
-  // window.console.log(container, 'container');
-  // window.console.log(
-  //   container.containerInfo.children.reduce((acc, curr) => ({ ...acc, ...createObjectNested(curr) }), {}),
-  //   'container worked',
-  // );
   const dispatch = useDispatch();
   React.useEffect(() => {
+    if (!container.containerInfo.children) return;
     dispatch(
       createDataSet({
         [container.containerInfo.id]: container.containerInfo.children.reduce(
@@ -29,7 +25,7 @@ const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
 
   return (
     <div className="text-right">
-      <BuildActionsComponentByType actions={container.metadata.actions} />
+      <BuildActionsComponentByType actions={container.metadata?.actions} />
     </div>
   );
 };

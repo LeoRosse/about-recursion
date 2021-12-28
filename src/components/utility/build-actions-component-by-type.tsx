@@ -6,7 +6,7 @@ import { MetadataAction } from '../../types/metadata-action';
 import { Dropdown } from '../dropdown/dropdown';
 
 interface BuildActionsComponentByTypeProps {
-  actions: MetadataAction[];
+  actions: MetadataAction[] | undefined;
 }
 
 const BuildActionsComponentByType: React.FC<BuildActionsComponentByTypeProps> = ({ actions }) => {
@@ -22,7 +22,7 @@ const BuildActionsComponentByType: React.FC<BuildActionsComponentByTypeProps> = 
   };
   return (
     <div className="flex">
-      {actions.map((action) => {
+      {actions?.map((action) => {
         const Component = mapActionsToComponent[action.types];
         return (
           <div key={action.types}>

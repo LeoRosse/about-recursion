@@ -185,7 +185,7 @@ const brandOverview: { containers: Container[] } = {
           },
           {
             containerInfo: {
-              id: 'top-images',
+              id: 'top-images-container',
               title: 'Top Images',
               children: [
                 {
