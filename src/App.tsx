@@ -4,12 +4,14 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.scss';
-import { returnRoutes } from './routes';
+import { Routes } from './routes';
 import { store } from './store/store';
 
 const App = () => (
   <Provider store={store}>
-    <BrowserRouter>{returnRoutes()}</BrowserRouter>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   </Provider>
 );
 
