@@ -7,19 +7,17 @@ const requirePreserved = require.context('./pages', true, /_app.tsx|404.tsx$/);
 
 // this function returns charts based on the own ids. The filename MUST match with the id on payloads.
 const Routes: React.FC = () => {
-  const ROUTES = requirePages
-    .keys()
-    .reduce<{ [key: string]: React.ComponentType }>(
-      (acc, curr) => ({ ...acc, [curr]: requirePages(curr).default }),
-      {},
-    );
+  const PAGES_KEYS = requirePages.keys();
+  const PRESERVED_KEYS = requirePreserved.keys();
 
-  const PRESERVED = requirePreserved
-    .keys()
-    .reduce<{ [key: string]: React.ComponentType }>(
-      (acc, curr) => ({ ...acc, [curr]: requirePreserved(curr).default }),
-      {},
-    );
+  const ROUTES = PAGES_KEYS.filter((el) => !PRESERVED_KEYS.includes(el)).reduce<{
+    [key: string]: React.ComponentType;
+  }>((acc, curr) => ({ ...acc, [curr]: requirePages(curr).default }), {});
+
+  const PRESERVED = PRESERVED_KEYS.reduce<{ [key: string]: React.ComponentType }>(
+    (acc, curr) => ({ ...acc, [curr]: requirePreserved(curr).default }),
+    {},
+  );
 
   const routes = Object.keys(ROUTES).map((route) => {
     const path = route
@@ -41,9 +39,9 @@ const Routes: React.FC = () => {
   return (
     <App>
       <BrowserRoutes>
-        {routes.map(({ path, component: Component }) => {
-          return <Route key={path} path={path} element={<Component />} />;
-        })}
+        {routes.map(({ path, component: Component }) => (
+          <Route key={path} path={path} element={<Component />} />
+        ))}
         <Route path="*" element={<NotFound />} />
       </BrowserRoutes>
     </App>

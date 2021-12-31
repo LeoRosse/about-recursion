@@ -7,7 +7,7 @@ import './index.scss';
 import { Routes } from './routes';
 import { store } from './store/store';
 
-const App = () => (
+const Bootstrap = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes />
@@ -15,4 +15,4 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Bootstrap />, document.getElementById('bootstrap'));
