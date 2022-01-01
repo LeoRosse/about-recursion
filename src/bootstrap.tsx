@@ -15,4 +15,9 @@ const Bootstrap = () => (
   </Provider>
 );
 
-ReactDOM.render(<Bootstrap />, document.getElementById('bootstrap'));
+ReactDOM.render(
+  <React.StrictMode>
+    <Bootstrap />
+  </React.StrictMode>,
+  document.getElementById('bootstrap'),
+);
