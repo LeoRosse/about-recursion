@@ -37,14 +37,14 @@ const Routes: React.FC = () => {
   const NotFound = preserved['404'];
 
   return (
-    <App>
-      <BrowserRoutes>
+    <BrowserRoutes>
+      <Route element={<App />}>
         {routes.map(({ path, component: Component }) => (
           <Route key={path} path={path} element={<Component />} />
         ))}
         <Route path="*" element={<NotFound />} />
-      </BrowserRoutes>
-    </App>
+      </Route>
+    </BrowserRoutes>
   );
 };
 
