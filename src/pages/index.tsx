@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from 'src/components/layout/layout';
 
 const Home = () => {
-  window.console.log('mi sto renderizzando Home');
+  window.console.log('Rendering: Home');
   return (
     <div className="relative bg-white overflow-hidden h-screen">
       <div className="lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2">
@@ -42,6 +42,7 @@ const Home = () => {
 
 export default Home;
 
-Home.getLayout = function getLayout(page: React.ReactNode) {
+// this pattern allows us to specify nested layout!
+Home.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };

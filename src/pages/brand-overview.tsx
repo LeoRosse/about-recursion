@@ -4,12 +4,12 @@ import { Layout } from 'src/components/layout/layout';
 import { brandOverview } from 'src/constants/payloads/brand-overview';
 
 const BrandOverview = () => {
-  window.console.log('mi sto renderizzando Brand Overview');
+  window.console.log('Rendering: Brand Overview');
   return <GraphSection containers={brandOverview.containers} />;
 };
 
 export default BrandOverview;
 
-BrandOverview.getLayout = function getLayout(page: React.ReactNode) {
+BrandOverview.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };

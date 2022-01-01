@@ -1,25 +1,14 @@
 import * as React from 'react';
 
-class Layout extends React.Component {
-  state = {
-    test: false,
-  };
+const Layout: React.FC = ({ children }) => {
+  const [test, setTest] = React.useState(false);
+  console.log(test, 'Rendering: Layout');
 
-  shouldComponentUpdate() {
-    return false;
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      window.console.log('io farò cose');
-    }, 3000);
-  }
-
-  render() {
-    window.console.log('mi sto renderizzando Layout');
-
-    return <div className="border-4">{this.props.children}</div>;
-  }
-}
+  React.useEffect(() => {
+    window.console.log('component did mount trigger');
+    setTest(true);
+  }, []);
+  return <main className="border-4">{children}</main>;
+};
 
 export { Layout };
