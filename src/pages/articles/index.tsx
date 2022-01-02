@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Link } from 'src/components/link';
 import { Layout } from 'src/components/layout/layout';
+import { LAYOUT_KEY } from 'src/constants/layout-key';
+import { EnrichedComponent } from 'src/types';
 
 const Articles = () => (
   <div>
@@ -11,6 +13,6 @@ const Articles = () => (
 export default Articles;
 
 // this pattern allows us to specify nested layout!
-Articles.getLayout = function getLayout(page: React.ReactElement) {
+(Articles as EnrichedComponent)[LAYOUT_KEY] = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };

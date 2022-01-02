@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { Outlet, useOutlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { routes } from 'src/routes';
+import { getMatchingRoute } from 'src/utility/get-matching-route';
 
 interface AppProps {}
 
 const GetLayout: React.FC = () => {
   window.console.log('Rendering: GetLayout');
-  const Element = useOutlet();
+  const pathname = window.location.pathname;
+  const route = getMatchingRoute(pathname, routes);
+
   // https://reactjs.org/docs/reconciliation.html
-  const getLayout = Element?.props.children.props.children.type.getLayout || ((page: React.ReactElement) => page);
+  const getLayout = route?.layout || ((page: React.ReactElement) => page);
   return getLayout(<Outlet />);
 };
 
