@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Route, Routes as BrowserRoutes } from 'react-router-dom';
+import { Spinner } from './components/spinner/spinner';
 
 // https://webpack.js.org/guides/dependency-management/#context-module-api
-const requirePages = require.context('./pages', true, /.tsx$/);
+const requirePages = require.context('./pages', true, /.tsx$/, 'lazy');
 const requirePreserved = require.context('./pages', true, /_app.tsx|404.tsx$/);
 
 // this function returns charts based on the own ids. The filename MUST match with the id on payloads.
@@ -11,8 +12,8 @@ const Routes: React.FC = () => {
   const PRESERVED_KEYS = requirePreserved.keys();
 
   const ROUTES = PAGES_KEYS.filter((el) => !PRESERVED_KEYS.includes(el)).reduce<{
-    [key: string]: React.ComponentType;
-  }>((acc, curr) => ({ ...acc, [curr]: requirePages(curr).default }), {});
+    [key: string]: () => Promise<{ default: React.ComponentType }>;
+  }>((acc, curr) => ({ ...acc, [curr]: () => requirePages(curr) }), {});
 
   const PRESERVED = PRESERVED_KEYS.reduce<{ [key: string]: React.ComponentType }>(
     (acc, curr) => ({ ...acc, [curr]: requirePreserved(curr).default }),
@@ -25,7 +26,7 @@ const Routes: React.FC = () => {
       .replace(/\[\.{3}.+\]/, '*')
       .replace(/\[(.+)\]/, ':$1');
 
-    return { path, component: ROUTES[route] };
+    return { path, component: React.lazy(ROUTES[route]) };
   });
 
   const preserved = Object.keys(PRESERVED).reduce<{ [key: string]: React.ComponentType }>((acc, file) => {
@@ -37,14 +38,16 @@ const Routes: React.FC = () => {
   const NotFound = preserved['404'];
 
   return (
-    <BrowserRoutes>
-      <Route element={<App />}>
-        {routes.map(({ path, component: Component }) => (
-          <Route key={path} path={path} element={<Component />} />
-        ))}
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </BrowserRoutes>
+    <React.Suspense fallback={<Spinner />}>
+      <BrowserRoutes>
+        <Route element={<App />}>
+          {routes.map(({ path, component: Component }) => (
+            <Route key={path} path={path} element={<Component />} />
+          ))}
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </BrowserRoutes>
+    </React.Suspense>
   );
 };
 
