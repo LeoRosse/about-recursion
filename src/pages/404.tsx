@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'src/components/link';
 
 const NotFound: React.FC = () => (
   <div className="flex justify-center items-center h-screen">

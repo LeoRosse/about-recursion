@@ -3,3 +3,4 @@ export * from './component';
 export * from './container';
 export * from './data-set';
 export * from './metadata-action';
+export * from './route';

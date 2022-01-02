@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Layout } from 'src/components/layout/layout';
+import { Link } from 'src/components/link';
 
 const Article = () => {
   const { articleId } = useParams<{ articleId: string }>();
