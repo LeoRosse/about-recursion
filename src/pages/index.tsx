@@ -31,7 +31,7 @@ const Home = () => {
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <img
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="https://images.unsplash.com/photo-1499510502518-8f294dac3f9f?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb"
+          src="https://images.unsplash.com/photo-1499510502518-8f294dac3f9f?ixlib=rb-1.2.1&q=10&fm=jpg&crop=entropy&cs=srgb"
           alt=""
         />
       </div>

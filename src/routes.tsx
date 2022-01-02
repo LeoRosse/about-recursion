@@ -27,7 +27,6 @@ const routes = Object.keys(ROUTES).map((route) => {
   return { path, component: React.lazy(ROUTES[route]), preload: ROUTES[route] };
 });
 
-window.console.log(routes, 'routes');
 const preserved = Object.keys(PRESERVED).reduce<{ [key: string]: React.ComponentType }>((acc, file) => {
   const key = file.replace(/\.\/|.tsx$/g, '');
   return { ...acc, [key]: PRESERVED[file] };
