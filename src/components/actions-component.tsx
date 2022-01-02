@@ -22,10 +22,10 @@ const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
       }),
     );
   }, [container]);
-  window.console.log(container, 'container');
+
   return (
     <div className="text-right">
-      <BuildActionsComponentByType actions={container.metadata?.actions} />
+      <BuildActionsComponentByType actions={container.metadata?.actions} containerId={container.containerInfo.id} />
     </div>
   );
 };
