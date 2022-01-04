@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DataSet } from '../../types/data-set';
-import { updateNestedObject } from '../../utility/update-nested-object';
+import { DataSet } from 'src/types/data-set';
+import { updateNestedObject } from 'src/utility/update-nested-object';
 
 export interface DataSliceState {
   dataSet: DataSet;
