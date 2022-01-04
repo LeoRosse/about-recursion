@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Route, Routes as BrowserRoutes } from 'react-router-dom';
-import { Spinner } from './components/spinner/spinner';
-import { LAYOUT_KEY } from './constants/layout-key';
-import { Layout } from './types';
+import { Spinner } from '../components/spinner/spinner';
+import { LAYOUT_KEY } from '../constants/layout-key';
+import { Layout } from '../types';
 
 // https://webpack.js.org/guides/dependency-management/#context-module-api
 const requirePages = require.context('./pages', true, /.tsx$/, 'lazy');

@@ -1,14 +1,23 @@
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
+import { MakeGenerics, useMatch } from 'react-location';
 import { Layout } from 'src/components/layout/layout';
 import { Link } from 'src/components/link';
 
+type Route = MakeGenerics<{ LoaderData: any; Params: { articleId: string } }>;
+
 const Article = () => {
-  const { articleId } = useParams<{ articleId: string }>();
+  const {
+    params: { articleId },
+  } = useMatch<Route>();
+  window.console.log('Rendering: Article Page');
+
   window.console.log(articleId, 'article id');
   return (
     <div>
-      Article Page <Link to="/articles/2">Go</Link>
+      Article Page
+      <Link preload={5000} to="/articles/2">
+        Go
+      </Link>
     </div>
   );
 };

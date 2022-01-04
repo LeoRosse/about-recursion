@@ -1,14 +1,29 @@
 import * as React from 'react';
+import { LoaderFn, MakeGenerics, useMatch } from 'react-location';
+import { client } from 'src/clients/graphql-client';
+import { GET_POSTS } from 'src/graphql/query/posts';
 import { Link } from 'src/components/link';
 import { Layout } from 'src/components/layout/layout';
 import { LAYOUT_KEY } from 'src/constants/layout-key';
 import { EnrichedComponent } from 'src/types';
 
-const Articles = () => (
-  <div>
-    Articles Page <Link to="/articles/1">Go</Link>
-  </div>
-);
+type Route = MakeGenerics<{ LoaderData: any; Params: { articleId: string } }>;
+
+export const loader: LoaderFn<Route> = async () => {
+  return client.query({ query: GET_POSTS });
+};
+
+const Articles = () => {
+  const { data } = useMatch<Route>();
+  window.console.log('Rendering: Articles Page');
+
+  window.console.log(data, 'Articles Page: [data]');
+  return (
+    <div>
+      Articles Page <Link to="/articles/1">Go</Link>
+    </div>
+  );
+};
 
 export default Articles;
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-location';
 import { routes } from 'src/routes';
 import { getMatchingRoute } from 'src/utility/get-matching-route';
 
