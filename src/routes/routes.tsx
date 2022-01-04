@@ -27,6 +27,7 @@ const PRESERVED = PRESERVED_KEYS.reduce<{ [key: string]: React.ComponentType }>(
 const regularRoutes = Object.keys(ROUTES).map((key) => {
   const route = ROUTES[key];
   const path = key
+    .replace(/\.\/index.tsx$/g, '/')
     .replace(/\.|\/index|tsx$/g, '')
     .replace(/\[\.{3}.+\]/, '*')
     .replace(/\[(.+)\]/, ':$1');

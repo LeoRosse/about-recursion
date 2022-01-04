@@ -7,10 +7,10 @@ import { Layout } from 'src/components/layout/layout';
 import { LAYOUT_KEY } from 'src/constants/layout-key';
 import { EnrichedComponent } from 'src/types';
 
-type Route = MakeGenerics<{ LoaderData: any; Params: { articleId: string } }>;
+type Route = MakeGenerics<{ LoaderData: any }>;
 
 export const loader: LoaderFn<Route> = async () => {
-  return client.query({ query: GET_POSTS });
+  return await client.query({ query: GET_POSTS });
 };
 
 const Articles = () => {
