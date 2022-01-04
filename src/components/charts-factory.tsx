@@ -4,6 +4,7 @@ import { isRight } from 'fp-ts/lib/Either';
 import { getErrorCodec } from 'src/utility/get-error-codec';
 
 interface ChartsFactoryProps<A, O, I> {
+  chartId: string;
   codec: Type<A, O, I>;
   data: I;
 }
@@ -25,7 +26,7 @@ class ChartsFactory<A, O, I> extends React.Component<ChartsFactoryProps<A, O, I>
     const decodedData = codec.decode(data);
     if (!isRight(decodedData)) {
       window.console.error(getErrorCodec(decodedData));
-      throw Object.assign(new Error(`Couldn't decode bubble data for stats new`));
+      throw Object.assign(new Error(`Couldn't decode data for ${this.props.chartId}`));
     }
     this.setState({ decodedData: decodedData.right });
   }
