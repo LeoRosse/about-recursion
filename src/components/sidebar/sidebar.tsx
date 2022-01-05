@@ -2,8 +2,10 @@ import * as React from 'react';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = React.useState(false);
+  window.console.log('Rendering Sidebar');
+
   React.useEffect(() => {
-    window.console.log('component did mount trigger Sidebar');
+    window.console.log('Sidebar component did mount trigger');
     setShowSidebar(true);
   }, []);
   return (
