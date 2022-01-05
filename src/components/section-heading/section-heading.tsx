@@ -11,11 +11,22 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ container }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex justify-between my-4">
+    <div className="flex justify-between my-4 items-center">
       <div>Name: {container.containerInfo.title}</div>
       <div className="flex">
-        <button onClick={() => dispatch(updatePolicy('public'))}>public</button>
-        <button onClick={() => dispatch(updatePolicy('private'))}>private</button>
+        <button
+          className="ml-2 border-black border-2 p-1 rounded shadow-md"
+          onClick={() => dispatch(updatePolicy('public'))}
+        >
+          public
+        </button>
+        <button
+          onClick={() => dispatch(updatePolicy('private'))}
+          type="button"
+          className="ml-2 border-black border-2 p-1 rounded shadow-md"
+        >
+          private
+        </button>
       </div>
     </div>
   );

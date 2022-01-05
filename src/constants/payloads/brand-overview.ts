@@ -1,3 +1,4 @@
+import { Display } from 'src/types/display';
 import { Container } from '../../types';
 
 const brandOverview: { containers: Container[] } = {
@@ -13,6 +14,7 @@ const brandOverview: { containers: Container[] } = {
               title: 'Audience Public',
               cols: 3,
               rows: 2,
+              display: Display.FLEX,
               children: [
                 {
                   chartInfo: {
@@ -73,6 +75,7 @@ const brandOverview: { containers: Container[] } = {
               title: 'Content',
               cols: 3,
               rows: 2,
+              display: Display.FLEX,
               children: [
                 {
                   chartInfo: {
@@ -97,6 +100,7 @@ const brandOverview: { containers: Container[] } = {
                     id: 'nested-container',
                     cols: 1,
                     rows: 2,
+                    display: Display.BLOCK,
                     children: [
                       {
                         chartInfo: {
@@ -113,7 +117,18 @@ const brandOverview: { containers: Container[] } = {
                     ],
                   },
                   metadata: {
-                    containerBox: false,
+                    actions: [
+                      {
+                        types: 'export',
+                        values: ['image', 'xls', 'svg'],
+                      },
+                    ],
+                    relatedActions: [
+                      {
+                        types: 'policy',
+                        values: ['public'],
+                      },
+                    ],
                   },
                 },
                 {
