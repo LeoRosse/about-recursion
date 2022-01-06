@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface DataSliceState {
-  chartsActions: Record<string, unknown>;
+export interface DataSliceState<T> {
+  actions: Record<string, T>;
 }
 
-const initialState: DataSliceState = { chartsActions: {} };
+const initialState: DataSliceState<Record<string, string>> = { actions: {} };
 
 export const chartActionsSlice = createSlice({
   name: 'chartActions',
   initialState,
   reducers: {
-    setChartAction: (state, action: PayloadAction<Record<string, unknown>>) => {
-      state.chartsActions = { ...state.chartsActions, ...action.payload };
+    setChartAction: <T>(state: DataSliceState<T>, action: PayloadAction<Record<string, T>>) => {
+      state.actions = { ...state.actions, ...action.payload };
     },
   },
 });

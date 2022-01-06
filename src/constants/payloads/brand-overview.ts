@@ -208,6 +208,14 @@ const brandOverview: { containers: Container[] } = {
                     id: 'top-images',
                     title: 'Top Images',
                   },
+                  metadata: {
+                    actions: [
+                      {
+                        types: 'chartType',
+                        values: ['line', 'area'],
+                      },
+                    ],
+                  },
                 },
               ],
             },

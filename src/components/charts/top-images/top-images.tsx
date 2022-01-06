@@ -6,18 +6,22 @@ import { Component } from 'src/types/component';
 import { User } from 'src/types/user';
 import { ChartsFactory } from 'src/components/charts-factory';
 import { users, UsersInput, UsersParametric } from 'src/codec/users';
+import { useAppDispatch } from 'src/store/hooks';
+import { updateDataSet } from 'src/store/slices';
 
 interface TopImagesProps extends Component {
   chart: Chart;
 }
 
 const TopImages: React.FC<TopImagesProps> = ({ chart, id }) => {
-  window.console.log(id, 'id');
-  window.console.log(chart, 'chart');
+  window.console.log('Rendering Top Images');
+  const dispatch = useAppDispatch();
 
   const { data } = useQuery<{ users: { data: User[] } }>(GET_USERS);
 
-  window.console.log(data, 'data');
+  React.useEffect(() => {
+    if (data) dispatch(updateDataSet({ keyName: id, data }));
+  }, [data]);
 
   return <ChartsFactory<UsersParametric, UsersParametric, UsersInput> chart={chart} codec={users} data={data} />;
 };

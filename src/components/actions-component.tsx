@@ -12,6 +12,7 @@ interface ActionsComponentProps {
 }
 
 const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
+  window.console.log('Rendering ActionsComponent');
   const dispatch = useDispatch();
   const isContainerCheck = isContainer(container);
   React.useEffect(() => {
