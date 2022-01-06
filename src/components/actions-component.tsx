@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
+import { Chart } from 'src/types/chart';
+import { isContainer } from 'src/types/is-container';
 import { createDataSet } from '../store/slices';
 import { Container } from '../types';
 import { createObjectNested } from '../utility/create-nested-object';
-import { BuildActionsComponentByType } from './utility/build-actions-component-by-type';
+import { BuildActionsComponentByType } from './utility/build-actions.component-by-type';
 
 interface ActionsComponentProps {
-  container: Container;
+  container: Container | Chart;
 }
 
 const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
   const dispatch = useDispatch();
+  const isContainerCheck = isContainer(container);
   React.useEffect(() => {
-    if (!container.containerInfo.children) return;
+    if (!isContainerCheck || !container.containerInfo.children) return;
     dispatch(
       createDataSet({
         [container.containerInfo.id]: container.containerInfo.children.reduce(
@@ -25,7 +28,10 @@ const ActionsComponent: React.FC<ActionsComponentProps> = ({ container }) => {
 
   return (
     <div className="text-right">
-      <BuildActionsComponentByType actions={container.metadata?.actions} containerId={container.containerInfo.id} />
+      <BuildActionsComponentByType
+        actions={container.metadata?.actions}
+        containerId={isContainerCheck ? container.containerInfo.id : container.chartInfo.id}
+      />
     </div>
   );
 };

@@ -1,8 +1,5 @@
 import * as React from 'react';
-
-interface RefContextInterface {
-  divRef: React.RefObject<HTMLDivElement> | null;
-}
+import { RefContextInterface } from 'src/types';
 
 export const RefContext = React.createContext<RefContextInterface>({
   divRef: null,

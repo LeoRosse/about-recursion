@@ -5,4 +5,5 @@ export * from './data-set';
 export * from './enriched-component';
 export * from './layout';
 export * from './metadata-action';
+export * from './ref-context-interface';
 export * from './route';
