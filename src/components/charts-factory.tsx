@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Type } from 'io-ts';
 import { isRight } from 'fp-ts/lib/Either';
 import { getErrorCodec } from 'src/utility/get-error-codec';
+import { Chart } from 'src/types/chart';
 
 interface ChartsFactoryProps<A, O, I> {
-  chartId: string;
+  chart: Chart;
   codec: Type<A, O, I>;
   data: I;
 }
@@ -26,13 +27,13 @@ class ChartsFactory<A, O, I> extends React.Component<ChartsFactoryProps<A, O, I>
     const decodedData = codec.decode(data);
     if (!isRight(decodedData)) {
       window.console.error(getErrorCodec(decodedData));
-      throw Object.assign(new Error(`Couldn't decode data for ${this.props.chartId}`));
+      throw Object.assign(new Error(`Couldn't decode data for ${this.props.chart.chartInfo.id}`));
     }
     this.setState({ decodedData: decodedData.right });
   }
 
   render(): React.ReactNode {
-    return null;
+    return <div id={this.props.chart.chartInfo.id}>{this.props.chart.chartInfo.id}</div>;
   }
 }
 
