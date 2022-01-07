@@ -55,7 +55,7 @@ module.exports = (_, argv) => {
         filename: 'remoteEntry.js',
         remotes: {},
         exposes: {
-          './Recursion': './src/App',
+          './Recursion': './src/Entry',
         },
         shared: {
           ...deps,
