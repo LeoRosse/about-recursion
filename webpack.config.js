@@ -51,10 +51,12 @@ module.exports = (_, argv) => {
 
     plugins: [
       new ModuleFederationPlugin({
-        name: 'about_recursion',
+        name: 'recursion',
         filename: 'remoteEntry.js',
         remotes: {},
-        exposes: {},
+        exposes: {
+          './Recursion': './src/App',
+        },
         shared: {
           ...deps,
           react: {
@@ -64,6 +66,10 @@ module.exports = (_, argv) => {
           'react-dom': {
             singleton: true,
             requiredVersion: deps['react-dom'],
+          },
+          'react-router-dom': {
+            singleton: true,
+            requiredVersion: deps['react-router-dom'],
           },
         },
       }),
