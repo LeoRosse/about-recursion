@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Entry from './Entry';
+import Entry from './entry';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Entry />
-  </React.StrictMode>,
-  document.getElementById('bootstrap'),
-);
+ReactDOM.render(<Entry />, document.getElementById('bootstrap'));

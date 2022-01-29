@@ -7,12 +7,17 @@ import { ActionsComponent } from '../actions-component';
 import { GenericContainer } from '../hoc/generic-container';
 import { displayContainer } from './display-container';
 import { createChart } from './create-chart';
+import { useAppDispatch } from 'src/store/hooks';
+import { inizializeDragItems } from 'src/store/slices/drag-n-drop.slice';
+import { DraggableList } from '../draggable-list/draggable-list';
 
 const createComponent = (container: Container | Chart): JSX.Element | null => {
+  const dispatch = useAppDispatch();
   // container
   if (isContainer(container)) {
     // here the logic to render the container (print, policy etc)
     if (!displayContainer(container)) return null;
+    dispatch(inizializeDragItems(container));
     return (
       <RefProvider>
         {(container.containerInfo.title || container.metadata?.actions?.length) && (
@@ -22,15 +27,13 @@ const createComponent = (container: Container | Chart): JSX.Element | null => {
           </div>
         )}
         <GenericContainer container={container}>
-          {container.containerInfo.children?.map((child: Container | Chart) => (
-            <div key={isContainer(child) ? child.containerInfo.id : child.chartInfo.id}>{createComponent(child)}</div>
-          ))}
+          <DraggableList container={container} createComponent={createComponent} />
         </GenericContainer>
       </RefProvider>
     );
   }
   // chart
-  return <div key={container.chartInfo.id}>{createChart(container)}</div>;
+  return createChart(container);
 };
 
 export { createComponent };

@@ -51,10 +51,12 @@ const NotFound = preserved['404'];
 const location = new ReactLocation();
 const routes: Route[] = [...regularRoutes, { path: '*', element: <NotFound /> }];
 
-const Routes: React.FC = () => (
-  <Router location={location} routes={routes}>
-    <App />
-  </Router>
-);
+const Routes: React.FC = () => {
+  return (
+    <Router location={location} routes={routes}>
+      <App />
+    </Router>
+  );
+};
 
 export { Routes, routes };
